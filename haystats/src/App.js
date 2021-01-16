@@ -1,25 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from './logo-small.png';
+import './index.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Editsjdghkasjhgjdshgjsgdskjgshbgjhsdjkghhjdfhjghdfhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+console.log(logo);
+// function App() {
+//   return (
+//     <div className="App">
+//       <header className="App-header">
+//         <img src={logo} className="App-logo" alt="logo" />
+//         <p>
+//           *Please read the following the voice of the EA Sports guy*
+//           <br></br>Click the button below to get stacked with stats
+//         </p>
+//       </header>
+//     </div>
+//   );
+// }
 
-export default App;
+
+export default function Popup(){
+  return(
+    /*attempting a logo*/
+    <p>Help me</p>,
+
+    <img logo alt="logo" />,
+
+    /*Titre*/
+    <blockquote>
+      <h1> Welcome to Haystats! </h1>
+    </blockquote>
+   );
+ };
