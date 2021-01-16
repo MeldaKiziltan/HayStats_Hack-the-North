@@ -7,11 +7,11 @@
   "permissions": ["tabs", "activeTab", "declarativeContent", "storage"],
 
   "page_action": {
-    "default_popup": "public/index.html"
+    "default_popup": "public/popup.html"
   },
 
   "background": {
-    "scripts": ["src/index.js"],
+    "scripts": ["src/popup.js"],
     "persistent": false
   },
 
@@ -22,7 +22,7 @@
   "content_scripts": [
     {
         "matches": ["<all_urls>"],
-        "css": ["src/index.css"],
-        "js": ["src/index.js"]
+        "css": ["src/popup.css"],
+        "js": ["src/popup.js"]
     }]
 }
