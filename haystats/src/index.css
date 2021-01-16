@@ -16,26 +16,30 @@ code {
     monospace;
 }
 
-div.titleText {
+h1 {
   /* banner height */
   height: 40px; 
   /*banner colour*/
-  background-color: #ffefa9;
+  /* background-color: #ffefa9; */
 
   /*title text*/
   text-align: center;
   color: rgb(255, 186, 59);
-  /* font-size: 30px; */
-}
-
-h1 {
   font-size: 30px;
+
+  margin-left: 0px;
 }
 
-div {
-  text-align: left;
-}
+div {}
 
 .Logo {
-  background-image: url(./logo-small.png);
+  width: 50px;
+  object-fit: contain;
+}
+
+.container{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }

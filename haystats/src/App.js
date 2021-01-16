@@ -19,14 +19,12 @@ console.log(logo);
 
 export default function Popup(){
   return(
-    /*attempting a logo*/
-    <p>Help me</p>,
+    <div className = "container">
+    <img src={logo} className="Logo" alt="logo" />
 
-    <img logo alt="logo" />,
-
-    /*Titre*/
     <blockquote>
       <h1> Welcome to Haystats! </h1>
     </blockquote>
+    </div>
    );
  };
