@@ -1,0 +1,29 @@
+{
+  "manifest_version": 2,
+
+  "name": "Haystat",
+  "description": "Find your stats like a needle in a haystack!",
+  "version": "0.0.1",
+  "permissions": ["tabs", "activeTab", "declarativeContent", "storage"],
+
+  "page_action": {
+    "default_popup": "public/popup.html",
+    "default_title": "Open the popup"
+  },
+
+  "background": {
+    "scripts": ["src/popup.js"],
+    "persistent": false
+  },
+
+  "icons": {
+    "192": "logo192.png"
+  },
+
+  "content_scripts": [
+    {
+        "matches": ["<all_urls>"],
+        "css": ["src/index.css"],
+        "js": ["src/index.js"]
+    }]
+}
