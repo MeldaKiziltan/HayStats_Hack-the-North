@@ -32,6 +32,10 @@ h1 {
 
 div {}
 
+.button{
+  text-align: center;
+}
+
 .Logo {
   width: 50px;
   object-fit: contain;

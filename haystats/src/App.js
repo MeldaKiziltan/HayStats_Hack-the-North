@@ -1,6 +1,6 @@
 import logo from './logo-small.png';
 import './index.css';
-import { Button } from '@material-ui/core';
+import { Button, hexToRgb } from '@material-ui/core';
 
 console.log(logo);
 // function App() {
@@ -20,13 +20,18 @@ console.log(logo);
 
 export default function Popup(){
   return(
-    <div className = "container">
-    <img src={logo} className="Logo" alt="logo" />
-    <blockquote>
-      <h1> Welcome to Haystats! </h1>
-    </blockquote>
+    <div>
+      <div className = "container">
+      <img src={logo} className="Logo" alt="logo" />
+      <blockquote>
+        <h1> Welcome to Haystats! </h1>
+      </blockquote>
+      </div>
 
-    <Button color="primary">Hello World</Button>
+      <div className = "button">
+        <Button variant="outlined" color="default">Time to find your needle in a haystack!</Button>
+      </div>
+
     </div>
    );
  };
