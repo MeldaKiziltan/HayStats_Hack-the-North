@@ -1,5 +1,6 @@
 import logo from './logo-small.png';
 import './index.css';
+import { Button } from '@material-ui/core';
 
 console.log(logo);
 // function App() {
@@ -21,10 +22,11 @@ export default function Popup(){
   return(
     <div className = "container">
     <img src={logo} className="Logo" alt="logo" />
-
     <blockquote>
       <h1> Welcome to Haystats! </h1>
     </blockquote>
+
+    <Button color="primary">Hello World</Button>
     </div>
    );
  };
