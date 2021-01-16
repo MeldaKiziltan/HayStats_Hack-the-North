@@ -78,7 +78,25 @@ naturalLanguageUnderstanding.analyze(analyzeParams)
     }
   }
 
+  //add sentences
+  let sentences = article_text.split(". ");
+  let statistics = [];
+ // console.log(sentences);
+
+  
+  for (let sentence = 0; sentence < sentences.length; sentence++)
+  {
+    for (let quantity = 0; quantity < quantities.length; quantity++)
+    {
+      if ( sentences[sentence].includes(quantities[quantity]) )
+      {
+        console.log(sentences[sentence]);
+        //document.write (sentences[sentence]);
+        quantity = quantities.length;
+      }
     
+    }
+  }
   
     //info = JSON.stringify(analysisResults.keywords, null, 2);
     //console.log(info);
