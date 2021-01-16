@@ -1,25 +1,31 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
-  "icons": [
+  "manifest_version": 2,
+
+  "name": "Haystat",
+  "description": "Find your stats like a needle in a haystack!",
+  "version": "0.0.1",
+  "permissions": ["tabs", "activeTab", "declarativeContent", "storage"],
+
+  "page_action": {
+    "default_popup": "index.html"
+  },
+
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  },
+
+  "icons": {
+    "16": "logo-small.png",
+    "48": "logo-small.png",
+    "128": "logo-small.png",
+    "192": "logo192.png"
+  },
+
+  "content_scripts": [
     {
-      "src": "favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
-    },
-    {
-      "src": "logo192.png",
-      "type": "image/png",
-      "sizes": "192x192"
-    },
-    {
-      "src": "logo512.png",
-      "type": "image/png",
-      "sizes": "512x512"
-    }
-  ],
-  "start_url": ".",
-  "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+        "matches": ["<all_urls>"],
+        "css": ["index.css"],
+        "js": ["index.js"]
+    }]
 }
