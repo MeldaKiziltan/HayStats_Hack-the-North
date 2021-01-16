@@ -1,6 +1,7 @@
 import logo from './logo-small.png';
 import './index.css';
 import { Button, hexToRgb } from '@material-ui/core';
+import Fancy_button from './Fancy_button';
 
 console.log(logo);
 // function App() {
@@ -29,8 +30,10 @@ export default function Popup(){
       </div>
 
       <div className = "button">
-        <Button variant="outlined" color="default">Time to find your needle in a haystack!</Button>
+        <Fancy_button variant="outlined" color="default" />
       </div>
+
+    <br/>
 
     </div>
    );
