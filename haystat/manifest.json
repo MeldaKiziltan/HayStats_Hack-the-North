@@ -7,25 +7,22 @@
   "permissions": ["tabs", "activeTab", "declarativeContent", "storage"],
 
   "page_action": {
-    "default_popup": "index.html"
+    "default_popup": "public/index.html"
   },
 
   "background": {
-    "scripts": ["background.js"],
+    "scripts": ["src/index.js"],
     "persistent": false
   },
 
   "icons": {
-    "16": "logo-small.png",
-    "48": "logo-small.png",
-    "128": "logo-small.png",
-    "192": "logo192.png"
+    "192": "public/logo192.png"
   },
 
   "content_scripts": [
     {
         "matches": ["<all_urls>"],
-        "css": ["index.css"],
-        "js": ["index.js"]
+        "css": ["src/index.css"],
+        "js": ["src/index.js"]
     }]
 }
