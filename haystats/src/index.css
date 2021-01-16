@@ -1,10 +1,11 @@
 body {
-  margin: 0;
+  margin: 10px;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  min-width: 500px;
 }
 
 code {
@@ -13,11 +14,15 @@ code {
 }
 
 div.titleText {
-  height: 100px;
+  /* banner height */
+  height: 40px; 
+  /*banner colour*/
+  background-color: #ffefa9;
+
+  /*title text*/
   text-align: center;
-  color: #fff;
-  background-color: #39D550;
-  font-size: 30px;
+  color: rgb(255, 186, 59);
+  /* font-size: 30px; */
 }
 
 h1 {

@@ -9,7 +9,6 @@ class TitleBlock extends React.Component{
     return(
       <blockquote>
         <h1> Welcome to Haystats! </h1>
-
       </blockquote>
     );
   }
