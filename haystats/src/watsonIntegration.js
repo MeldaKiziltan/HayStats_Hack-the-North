@@ -71,7 +71,9 @@ function watson(URL, setSummary){
     }
 
     //add sentences
-    let sentences = article_text.split(". ");
+
+    let sentences = str.replace(/([.?!])\s*(?=[A-Z])/g, "$1|").split("|");
+    //let sentences = article_text.split(". ");
     //let sentences = article_text.match(/([^\.!\?]+[\.!\?]+)|([^\.!\?]+$)/g);
     let statistics = [];
 
