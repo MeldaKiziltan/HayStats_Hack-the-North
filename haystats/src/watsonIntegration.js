@@ -51,7 +51,7 @@ function watson(URL, setSummary){
       
     var title = analysisResults["result"]["metadata"]["title"];
     
-    //var article_text = analysisResults["result"]["analyzed_text"]; debugging purposes
+    var article_text = analysisResults["result"]["analyzed_text"];
 
     var categories = [];
     for(let item = 0; item < analysisResults["result"]["categories"].length; item++){
@@ -78,6 +78,7 @@ function watson(URL, setSummary){
 
 
 let stat_clue = [
+  "Zero",
   "One",
   "Two",
   "Three",
