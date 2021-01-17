@@ -51,7 +51,7 @@ function watson(URL, setSummary){
       
     var title = analysisResults["result"]["metadata"]["title"];
     
-    var article_text = analysisResults["result"]["analyzed_text"];
+    //var article_text = analysisResults["result"]["analyzed_text"]; debugging purposes
 
     var categories = [];
     for(let item = 0; item < analysisResults["result"]["categories"].length; item++){
@@ -70,65 +70,12 @@ function watson(URL, setSummary){
       }
     }
 
-    var quantities = [];
-    var entities = [];
-    for(let item = 0; item < analysisResults["result"]["entities"].length; item++){
-      if((analysisResults["result"]["entities"][item]["type"] === "Quantity") && (analysisResults["result"]["entities"][item]["relevance"] > ENTITY_REL_THRESHOLD)){
-        quantities.push(analysisResults["result"]["entities"][item]["text"]);
-      }
-      else if (analysisResults["result"]["entities"][item]["relevance"] > ENTITY_REL_THRESHOLD){
-        entities.push(analysisResults["result"]["entities"][item]["text"]);
-      }
-    }
-
     //add sentences
     let sentences = article_text.match(/([^\.!\?]+[\.!\?]+)|([^\.!\?]+$)/g);
     let statistics = [];
 
-
-    // let information;
-    
-    // information += "TITLE:\n" + title + "\n";
-
-    // let titleList = [];
-    
-    // let titleInfo = {
-    //   "title": "TITLE",
-    //   "info": titleList,
-    // }
-
-    // information["info"].push(title);
-    // information.push(titleInfo);
-
-    /*let conceptInfo = {
-      "title": "CONCEPTS",
-      "info": conceptList,
-    }*/
-    
-  
-
-    // information.push(conceptInfo);
-    /*
-    for (let quantity = 0; quantity < quantities.length; quantity++)
-      {
-        if ( sentences[sentence].includes(quantities[quantity]) )
-        {
-          console.log(sentences[sentence]);
-          //document.write (sentences[sentence]);
-          quantity = quantities.length;
-        }
-      }
-  
-      */
-
-
     let dataList = [];
-/*
-    let dataInfo = {
-      "title": "DATA",
-      "info": dataList,
-    }
-*/
+
 
 let stat_clue = [
   "One",
@@ -185,7 +132,7 @@ let stat_clue = [
       "title": `${title}`,
         "sections": [
         {
-          "sectionTitle": "Category",
+          "sectionTitle": "CATEGORY",
           "information": categories
         },
         { 
@@ -199,20 +146,8 @@ let stat_clue = [
       ]
     }
     
-    //information.push(dataList);
-    
+  
     setSummary(exportingInfo);
-    //console.log(JSON.stringify(exportingInfo, null, 2));
-
-     /*
-    console.log("\nARTICLE: ");
-    console.log(article_text);
-    */
-
-    //setSummary(information);
-    //console.log(information);
-      //info = JSON.stringify(analysisResults.keywords, null, 2);
-      //console.log(info);
     })
     .catch(err => {
       console.log('error:', err);
