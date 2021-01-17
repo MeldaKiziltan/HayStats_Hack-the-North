@@ -149,15 +149,15 @@ function watson(URL, setSummary){
           
     let exportingInfo = {
       "title": `TITLE ${title}`,
-        sections: [
+        "sections": [
         {
           "sectionTitle": "CONCEPTS",
-          information: conceptList
+          "information": conceptList
         },
 
         {
-          sectionTitle: "DATA",
-          information: dataList
+          "sectionTitle": "DATA",
+          "information": dataList
         }
       ]
     }
