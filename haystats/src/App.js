@@ -2,22 +2,9 @@ import logo from './logo-small.png';
 import './index.css';
 import { Button, hexToRgb } from '@material-ui/core';
 import Fancy_button from './Fancy_button';
+import naturalLanguageUnderstanding from './watsonIntegration';
 
 console.log(logo);
-// function App() {
-//   return (
-//     <div className="App">
-//       <header className="App-header">
-//         <img src={logo} className="App-logo" alt="logo" />
-//         <p>
-//           *Please read the following the voice of the EA Sports guy*
-//           <br></br>Click the button below to get stacked with stats
-//         </p>
-//       </header>
-//     </div>
-//   );
-// }
-
 
 export default function Popup(){
   return(
@@ -34,7 +21,8 @@ export default function Popup(){
       </div>
 
     <br/>
-
+    {/* Call the function */}
+    {/* <script type="text/javascript" src="watsonIntegration.js"></script> */}
     </div>
    );
  };

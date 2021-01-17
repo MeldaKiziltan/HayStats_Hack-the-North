@@ -4,6 +4,7 @@ import clsx from 'clsx';
 import Button from '@material-ui/core/Button';
 import { withStyles } from '@material-ui/core/styles';
 import FindInPageIcon from '@material-ui/icons/FindInPage';
+import watson from './watsonIntegration'
 
 // We can inject some CSS into the DOM.
 const styles = {
@@ -22,7 +23,7 @@ function ClassNames(props) {
   const { classes, children, className, ...other } = props;
 
   return (
-    <Button className={clsx(classes.root, className)} {...other} startIcon={<FindInPageIcon />}>
+    <Button className={clsx(classes.root, className)} {...other} startIcon={<FindInPageIcon />} onClick={() => { watson(document.URL) }}>
       {children || 'Click to find your needle in a haystack!'}
     </Button>
   );
