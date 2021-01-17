@@ -20,7 +20,7 @@ const ENTITY_REL_THRESHOLD = 0.7;
 
 //take out categories, concepts, entity
 const analyzeParams = {
-  'url': 'https://www.investors.com/market-trend/stock-market-today/dow-jones-futures-biden-stimulus-buzz-wanes-stock-market-rally-tesla-stock/',
+  'url': 'https://globalnews.ca/news/7580297/b-c-trans-canada-highway-closure/',
   'returnAnalyzedText': true,
   'features': {
     'categories' : {
@@ -38,10 +38,6 @@ const analyzeParams = {
     }
   }
 };
-
-function assignfunction(parameter) {
-  article_text = parameter;
-}
 
 
 naturalLanguageUnderstanding.analyze(analyzeParams)
@@ -70,7 +66,7 @@ naturalLanguageUnderstanding.analyze(analyzeParams)
   var quantities = [];
   var entities = [];
   for(let item = 0; item < analysisResults["result"]["entities"].length; item++){
-    if(analysisResults["result"]["entities"][item]["type"] == "Quantity"){
+    if(analysisResults["result"]["entities"][item]["type"] === "Quantity"){
       quantities.push(analysisResults["result"]["entities"][item]["text"]);
     }
     else if (analysisResults["result"]["entities"][item]["relevance"] > ENTITY_REL_THRESHOLD){
@@ -83,7 +79,12 @@ naturalLanguageUnderstanding.analyze(analyzeParams)
   let statistics = [];
  // console.log(sentences);
 
-  
+  console.log("CONCEPTS:");
+  for(let concept = 0; concept < concepts.length; concept++){
+    console.log(concepts[concept]);
+  }
+
+  console.log("\nDATA:");
   for (let sentence = 0; sentence < sentences.length; sentence++)
   {
     for (let quantity = 0; quantity < quantities.length; quantity++)
@@ -94,7 +95,6 @@ naturalLanguageUnderstanding.analyze(analyzeParams)
         //document.write (sentences[sentence]);
         quantity = quantities.length;
       }
-    
     }
   }
   
