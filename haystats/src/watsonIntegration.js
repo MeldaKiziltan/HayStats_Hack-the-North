@@ -22,6 +22,7 @@ function watson(URL, setSummary){
   const KEYWORD_REL_THRESHOLD = 0.7;
   const ENTITY_REL_THRESHOLD = 0.7;
 
+  //`${URL}`
   //take out categories, concepts, entity
   const analyzeParams = {
     'url': `${URL}`,
@@ -83,21 +84,23 @@ function watson(URL, setSummary){
   // console.log(sentences);
 
     
+
+    let information = "";
     for (let sentence = 0; sentence < sentences.length; sentence++)
     {
       for (let quantity = 0; quantity < quantities.length; quantity++)
       {
         if ( sentences[sentence].includes(quantities[quantity]) )
         {
-          console.log(sentences[sentence]);
+          information += sentences[sentence];
           //document.write (sentences[sentence]);
           quantity = quantities.length;
         }
       }
     }
 
-    setSummary(sentences);
-    
+    setSummary(information);
+    //console.log(information);
       //info = JSON.stringify(analysisResults.keywords, null, 2);
       //console.log(info);
     })
