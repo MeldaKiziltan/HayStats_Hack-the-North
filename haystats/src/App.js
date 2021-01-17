@@ -18,7 +18,7 @@ export default function Popup(){
       <div className = "container">
       <img src={logo} className="Logo" alt="logo" />
       <blockquote>
-        <h1> Welcome to Haystats! </h1>
+        <h1> Welcome to HayStats! </h1>
       </blockquote>
       </div>
 
