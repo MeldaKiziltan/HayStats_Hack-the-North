@@ -2,21 +2,33 @@
   "manifest_version": 2,
 
   "name": "Haystats",
-  "description": "This extension is a starting point to create a real Chrome extension",
+  "description": "To find your needle in a haystack",
   "version": "0.0.2",
 
   "browser_action": {
     "default_popup": "index.html",
     "default_title": "Open the popup"
   },
+
   "icons": {
     "16": "logo-small.png",
     "48": "logo-small.png",
     "256": "logo-small.png"
   },
 
-  "content_security_policy": "script-src 'self' 'sha256-bXasWEz7DYWdEDBswcq6rd/BSuuE6Dr9rFDU7LT3A/c='; object-src 'self'",  
+  "content_security_policy": "script-src 'self' 'sha256-FuEjsdSyPU5lv7AypX1UpdTr/VvN3Yz3tRNxXHQKr6c='; object-src 'self'",
   
+  "web_accessible_resources": [
+    "watsonIntegration.js"
+  ],
+
   "permissions": [
+    "tabs",
+    "activeTab",
+    "declarativeContent", 
+    "storage",
+    "http://*/*",
+    "https://*/*",
+    "contextMenus"
   ]
 }

@@ -8,7 +8,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
 
   /* min width of window*/
-  min-width: 500px;
+  min-width: 700px;
 }
 
 code {
@@ -30,7 +30,7 @@ h1 {
   margin-left: 0px;
 }
 
-div {}
+/* div {} */
 
 .button{
   text-align: center;
