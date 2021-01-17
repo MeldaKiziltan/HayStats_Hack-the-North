@@ -28,9 +28,13 @@ export default function Popup(){
 
     <br/>
 
-    <ul>
-      {summary.information.map(item => (<li>item</li>))}
-    </ul>
+    <h1>{summary.title}</h1>
+    {summary.sections.map(section => (
+      <section>
+        <h3>{section.sectionTitle}</h3>
+        <ul>{section.information.map(item => (<li>item</li>))}</ul>
+      </section>
+    ))}
 
     {/* Call the function */}
     {/* <script type="text/javascript" src="watsonIntegration.js"></script> */}
