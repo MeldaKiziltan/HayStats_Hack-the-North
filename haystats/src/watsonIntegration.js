@@ -90,16 +90,23 @@ function watson(URL, setSummary){
     
     information += "TITLE:\n" + title + "\n";
 
+    let titleList = [];
+    
     let titleInfo = {
       "title": "TITLE",
-      "info": title,
+      "info": titleList,
     }
+
+    information["info"].push(title);
     information.push(titleInfo);
+
+    let conceptList = [];
 
     let conceptInfo = {
       "title": "CONCEPTS",
       "info": conceptList,
     }
+    
     for(let concept = 0; concept < concepts.length; concept++){
         conceptInfo["info"].push(concepts[concept]);
     }
@@ -117,7 +124,24 @@ function watson(URL, setSummary){
       }
   
       */
-  
+      
+    let information = {
+      title: "TITLE",
+        sections: [
+        {
+          sectionTitle: "asdf",
+          information: ["asdf", "asdf"]
+        },
+
+        {
+          sectionTitle: "asdf2",
+          information: ["asdf", "asdf"]
+        }
+      ]
+    }
+
+
+    let dataList = [];
 
     let dataInfo = {
       "title": "DATA",
@@ -138,6 +162,9 @@ function watson(URL, setSummary){
     }
     information.push(dataInfo);
     
+    setSummary(information);
+    console.log(information);
+
      /*
     console.log("\nARTICLE: ");
     console.log(article_text);
