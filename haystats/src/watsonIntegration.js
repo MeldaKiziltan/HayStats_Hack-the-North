@@ -20,7 +20,7 @@ function watson(URL, setSummary){
   const MAX_ENTITIES = 50;
 
   const KEYWORD_REL_THRESHOLD = 0.7;
-  const ENTITY_REL_THRESHOLD = 0.7;
+  const ENTITY_REL_THRESHOLD = 0.4;
 
   //`${URL}`
   //take out categories, concepts, entity
@@ -70,7 +70,7 @@ function watson(URL, setSummary){
     var quantities = [];
     var entities = [];
     for(let item = 0; item < analysisResults["result"]["entities"].length; item++){
-      if(analysisResults["result"]["entities"][item]["type"] === "Quantity"){
+      if((analysisResults["result"]["entities"][item]["type"] === "Quantity") && (analysisResults["result"]["entities"][item]["relevance"] > ENTITY_REL_THRESHOLD)){
         quantities.push(analysisResults["result"]["entities"][item]["text"]);
       }
       else if (analysisResults["result"]["entities"][item]["relevance"] > ENTITY_REL_THRESHOLD){
