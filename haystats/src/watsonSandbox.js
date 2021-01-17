@@ -24,6 +24,7 @@ const { IamAuthenticator } = require('ibm-watson/auth');
     'url': "https://en.wikipedia.org/wiki/Bread",
     'returnAnalyzedText': true,
     'features': {
+        'metadata' : {},
       'categories' : {
           'limit' : MAX_CATEGORY
       },
@@ -44,6 +45,8 @@ const { IamAuthenticator } = require('ibm-watson/auth');
     .then(analysisResults => {
       //console.log(JSON.stringify(analysisResults, null, 2));
       
+    var title = analysisResults["result"]["metadata"]["title"];
+    
     var article_text = analysisResults["result"]["analyzed_text"];
 
     var categories = [];
@@ -77,23 +80,49 @@ const { IamAuthenticator } = require('ibm-watson/auth');
     //add sentences
     let sentences = article_text.split(". ");
     let statistics = [];
-  // console.log(sentences);
 
-    
 
     let information = "";
+    information += "TITLE:\n" + title + "\n";
+    
+    information += "\nCONCEPTS:\n";
+    for(let concept = 0; concept < concepts.length; concept++){
+        if(concept !== 0){
+            information += " / ";
+        }
+        information += concepts[concept];
+    }
+    /*
+    for (let quantity = 0; quantity < quantities.length; quantity++)
+      {
+        if ( sentences[sentence].includes(quantities[quantity]) )
+        {
+          console.log(sentences[sentence]);
+          //document.write (sentences[sentence]);
+          quantity = quantities.length;
+        }
+      }
+  
+      */
+  
+    information += "\n\nData:";
     for (let sentence = 0; sentence < sentences.length; sentence++)
     {
       for (let quantity = 0; quantity < quantities.length; quantity++)
       {
         if ( sentences[sentence].includes(quantities[quantity]) )
         {
-          information += (sentences[sentence] + "\n\n");
+          information += "\n- " + sentences[sentence];
           //document.write (sentences[sentence]);
           quantity = quantities.length;
         }
       }
     }
+    
+     /*
+    console.log("\nARTICLE: ");
+    console.log(article_text);
+    */
 
     //setSummary(information);
     console.log(information);
