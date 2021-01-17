@@ -102,13 +102,13 @@ function watson(URL, setSummary){
 
     let conceptList = [];
 
-    let conceptInfo = {
+    /*let conceptInfo = {
       "title": "CONCEPTS",
       "info": conceptList,
-    }
+    }*/
     
     for(let concept = 0; concept < concepts.length; concept++){
-        conceptInfo["info"].push(concepts[concept]);
+        conceptList.push(concepts[concept]);
     }
 
     information.push(conceptInfo);
@@ -124,29 +124,15 @@ function watson(URL, setSummary){
       }
   
       */
-      
-    let information = {
-      title: "TITLE",
-        sections: [
-        {
-          sectionTitle: "asdf",
-          information: ["asdf", "asdf"]
-        },
-
-        {
-          sectionTitle: "asdf2",
-          information: ["asdf", "asdf"]
-        }
-      ]
-    }
 
 
     let dataList = [];
-
+/*
     let dataInfo = {
       "title": "DATA",
       "info": dataList,
     }
+*/
 
     for (let sentence = 0; sentence < sentences.length; sentence++)
     {
@@ -154,16 +140,32 @@ function watson(URL, setSummary){
       {
         if ( sentences[sentence].includes(quantities[quantity]) )
         {
-          dataInfo["info"].push(sentences[sentence]);
+          dataList["info"].push(sentences[sentence]);
           //document.write (sentences[sentence]);
           quantity = quantities.length;
         }
       }
     }
-    information.push(dataInfo);
+          
+    let exportingInfo = {
+      "title": `TITLE ${title}`,
+        sections: [
+        {
+          "sectionTitle": "CONCEPTS",
+          information: conceptList
+        },
+
+        {
+          sectionTitle: "DATA",
+          information: dataList
+        }
+      ]
+    }
     
-    setSummary(information);
-    console.log(information);
+    //information.push(dataList);
+    
+    setSummary(exportingInfo);
+    //console.log(information);
 
      /*
     console.log("\nARTICLE: ");
