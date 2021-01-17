@@ -1,9 +1,5 @@
-import NaturalLanguageUnderstandingV1 from 'ibm-watson/natural-language-understanding/v1';
-import { IamAuthenticator } from 'ibm-watson/auth';
-
-function watson(URL, setSummary){
-  // const NaturalLanguageUnderstandingV1 = require('ibm-watson/natural-language-understanding/v1');
-  // const { IamAuthenticator } = require('ibm-watson/auth');
+const NaturalLanguageUnderstandingV1 = require('ibm-watson/natural-language-understanding/v1');
+const { IamAuthenticator } = require('ibm-watson/auth');
 
   const naturalLanguageUnderstanding = new NaturalLanguageUnderstandingV1({
     version: '2020-08-01',
@@ -99,8 +95,8 @@ function watson(URL, setSummary){
       }
     }
 
-    setSummary(information);
-    //console.log(information);
+    //setSummary(information);
+    console.log(information);
       //info = JSON.stringify(analysisResults.keywords, null, 2);
       //console.log(info);
     })
@@ -109,8 +105,3 @@ function watson(URL, setSummary){
     });
 
   //let list = article_text.split(". ");
-
-
-}
-
-export default watson;
