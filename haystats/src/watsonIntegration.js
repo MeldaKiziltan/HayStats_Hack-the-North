@@ -130,18 +130,56 @@ function watson(URL, setSummary){
     }
 */
 
-    for (let sentence = 0; sentence < sentences.length; sentence++)
+let stat_clue = [
+  "One",
+  "Two",
+  "Three",
+  "Four",
+  "Five",
+  "Six",
+  "Seven",
+  "Eight",
+  "Nine",
+  "Ten",
+  "Eleven",
+  "Twelv",    // twelv on purpose
+  "Thirt",   // thirt on purpose
+  "Twenty",
+  "fif",
+  "First",
+  "Second",
+  "Third",
+  "Ninth",
+  "hundred",
+  "thousand",
+  "llion",
+  "half",
+  "quarter",
+  "dozen",
+  "0",
+  "1",
+  "2",
+  "3",
+  "4",
+  "5",
+  "6",
+  "7",
+  "8",
+  "9"
+  ];
+  
+
+  for (let sentence = 0; sentence < sentences.length; sentence++)
+  {
+    for (let clue = 0; clue < stat_clue.length; clue++)
     {
-      for (let quantity = 0; quantity < quantities.length; quantity++)
+      if ( sentences[sentence].includes(stat_clue[clue]))
       {
-        if ( sentences[sentence].includes(quantities[quantity]) )
-        {
-          dataList.push(sentences[sentence]);
-          //document.write (sentences[sentence]);
-          quantity = quantities.length;
-        }
+        dataList.push(sentences[sentence]);
+        clue = stat_clue.length;
       }
     }
+  }
           
     let exportingInfo = {
       "title": `${title}`,
