@@ -78,7 +78,7 @@ const { IamAuthenticator } = require('ibm-watson/auth');
     }
 
     //add sentences
-    let sentences = (article_text..match(/([^\.!\?]+[\.!\?]+)|([^\.!\?]+$)/g));
+    let sentences = (article_text.match(/([^\.!\?]+[\.!\?]+)|([^\.!\?]+$)/g));
     let statistics = [];
 
 
@@ -112,15 +112,7 @@ const { IamAuthenticator } = require('ibm-watson/auth');
       {
         if ( sentences[sentence].includes(quantities[quantity]) )
         {
-<<<<<<< HEAD
-<<<<<<< HEAD
-          information += sentences[sentence] +"\n";
-=======
           information += "\n- " + sentences[sentence];
->>>>>>> 248c4a47d725fc8caee56de34a6ec5936c50f7b4
-=======
-          information += "\n- " + sentences[sentence];
->>>>>>> 248c4a47d725fc8caee56de34a6ec5936c50f7b4
           //document.write (sentences[sentence]);
           quantity = quantities.length;
         }
