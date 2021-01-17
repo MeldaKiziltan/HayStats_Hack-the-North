@@ -72,10 +72,10 @@ function watson(URL, setSummary){
 
     //add sentences
 
-    sentences = sentences.split(/(?:\.\,)/g);
+    let sentences = article_text.split(/(?:\.\,)/g);
     //let sentences = str.replace(/([.?!])\s*(?=[A-Z])/g, "$1|").split("|");
     //let sentences = article_text.split(". ");
-    let sentences = article_text.match(/([^\.!\?]+[\.!\?]+)|([^\.!\?]+$)/g);
+    //let sentences = article_text.match(/([^\.!\?]+[\.!\?]+)|([^\.!\?]+$)/g);
     let statistics = [];
 
     let dataList = [];
