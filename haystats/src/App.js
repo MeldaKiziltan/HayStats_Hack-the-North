@@ -28,11 +28,11 @@ export default function Popup(){
 
     <br/>
 
-    {/* <h1>{summary.title}</h1> */}
-    {summary?.map(section => (
+    <h1>{summary?.title}</h1>
+    {summary?.sections.map(section => (
       <section>
-        <h3>{exportingInfo.sectionTitle}</h3>
-        <ul>{exportingInfo.information.map(item => (<li>item</li>))}</ul>
+        <h3>{section.sectionTitle}</h3>
+        <ul>{section.information.map(item => (<li>{item}</li>))}</ul>
       </section>
     ))}
 
