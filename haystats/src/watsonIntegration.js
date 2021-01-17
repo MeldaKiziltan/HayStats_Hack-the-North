@@ -55,7 +55,7 @@ function watson(URL, setSummary){
 
     var categories = [];
     for(let item = 0; item < analysisResults["result"]["categories"].length; item++){
-      categories[item] = analysisResults["result"]["categories"][item]["text"];
+      categories[item] = analysisResults["result"]["categories"][item]["label"];
     }
 
     var concepts = [];
@@ -100,16 +100,12 @@ function watson(URL, setSummary){
     // information["info"].push(title);
     // information.push(titleInfo);
 
-    let conceptList = [];
-
     /*let conceptInfo = {
       "title": "CONCEPTS",
       "info": conceptList,
     }*/
     
-    for(let concept = 0; concept < concepts.length; concept++){
-        conceptList.push(concepts[concept]);
-    }
+  
 
     // information.push(conceptInfo);
     /*
@@ -151,10 +147,13 @@ function watson(URL, setSummary){
       "title": `${title}`,
         "sections": [
         {
-          "sectionTitle": "CONCEPTS",
-          "information": conceptList
+          "sectionTitle": "Category",
+          "information": categories
         },
-
+        { 
+          "sectionTitle": "CONCEPTS",
+          "information": concepts
+        },
         {
           "sectionTitle": "DATA",
           "information": dataList
@@ -165,7 +164,7 @@ function watson(URL, setSummary){
     //information.push(dataList);
     
     setSummary(exportingInfo);
-    //console.log(information);
+    //console.log(JSON.stringify(exportingInfo, null, 2));
 
      /*
     console.log("\nARTICLE: ");

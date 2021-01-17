@@ -21,7 +21,7 @@ const naturalLanguageUnderstanding = new NaturalLanguageUnderstandingV1({
   //`${URL}`
   //take out categories, concepts, entity
   const analyzeParams = {
-    'url': `${URL}`,
+    'url': "https://physicsworld.com/a/nanotubes-show-their-true-colours/",
     'returnAnalyzedText': true,
     'features': {
         'metadata' : {},
@@ -51,7 +51,7 @@ const naturalLanguageUnderstanding = new NaturalLanguageUnderstandingV1({
 
     var categories = [];
     for(let item = 0; item < analysisResults["result"]["categories"].length; item++){
-      categories[item] = analysisResults["result"]["categories"][item]["text"];
+      categories[item] = analysisResults["result"]["categories"][item]["label"];
     }
 
     var concepts = [];
@@ -82,32 +82,28 @@ const naturalLanguageUnderstanding = new NaturalLanguageUnderstandingV1({
     let statistics = [];
 
 
-    let information;
+    // let information;
     
-    information += "TITLE:\n" + title + "\n";
+    // information += "TITLE:\n" + title + "\n";
 
-    let titleList = [];
+    // let titleList = [];
     
-    let titleInfo = {
-      "title": "TITLE",
-      "info": titleList,
-    }
+    // let titleInfo = {
+    //   "title": "TITLE",
+    //   "info": titleList,
+    // }
 
-    information["info"].push(title);
-    information.push(titleInfo);
-
-    let conceptList = [];
+    // information["info"].push(title);
+    // information.push(titleInfo);
 
     /*let conceptInfo = {
       "title": "CONCEPTS",
       "info": conceptList,
     }*/
     
-    for(let concept = 0; concept < concepts.length; concept++){
-        conceptList.push(concepts[concept]);
-    }
+  
 
-    information.push(conceptInfo);
+    // information.push(conceptInfo);
     /*
     for (let quantity = 0; quantity < quantities.length; quantity++)
       {
@@ -136,7 +132,7 @@ const naturalLanguageUnderstanding = new NaturalLanguageUnderstandingV1({
       {
         if ( sentences[sentence].includes(quantities[quantity]) )
         {
-          dataList["info"].push(sentences[sentence]);
+          dataList.push(sentences[sentence]);
           //document.write (sentences[sentence]);
           quantity = quantities.length;
         }
@@ -144,13 +140,16 @@ const naturalLanguageUnderstanding = new NaturalLanguageUnderstandingV1({
     }
           
     let exportingInfo = {
-      "title": `TITLE ${title}`,
+      "title": `${title}`,
         "sections": [
         {
-          "sectionTitle": "CONCEPTS",
-          "information": conceptList
+          "sectionTitle": "Category",
+          "information": categories
         },
-
+        { 
+          "sectionTitle": "CONCEPTS",
+          "information": concepts
+        },
         {
           "sectionTitle": "DATA",
           "information": dataList
@@ -160,8 +159,8 @@ const naturalLanguageUnderstanding = new NaturalLanguageUnderstandingV1({
     
     //information.push(dataList);
     
-    setSummary(exportingInfo);
-    //console.log(information);
+    //setSummary(exportingInfo);
+    console.log(JSON.stringify(exportingInfo, null, 2));
 
      /*
     console.log("\nARTICLE: ");
