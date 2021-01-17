@@ -86,16 +86,25 @@ function watson(URL, setSummary){
     let statistics = [];
 
 
-    let information = "";
-    information += "TITLE:\n" + title + "\n";
+    let information;
     
-    information += "\nCONCEPTS:\n";
-    for(let concept = 0; concept < concepts.length; concept++){
-        if(concept !== 0){
-            information += " / ";
-        }
-        information += concepts[concept];
+    information += "TITLE:\n" + title + "\n";
+
+    let titleInfo = {
+      "title": "TITLE",
+      "info": title,
     }
+    information.push(titleInfo);
+
+    let conceptInfo = {
+      "title": "CONCEPTS",
+      "info": conceptList,
+    }
+    for(let concept = 0; concept < concepts.length; concept++){
+        conceptInfo["info"].push(concepts[concept]);
+    }
+
+    information.push(conceptInfo);
     /*
     for (let quantity = 0; quantity < quantities.length; quantity++)
       {
@@ -109,19 +118,25 @@ function watson(URL, setSummary){
   
       */
   
-    information += "\n\nData:";
+
+    let dataInfo = {
+      "title": "DATA",
+      "info": dataList,
+    }
+
     for (let sentence = 0; sentence < sentences.length; sentence++)
     {
       for (let quantity = 0; quantity < quantities.length; quantity++)
       {
         if ( sentences[sentence].includes(quantities[quantity]) )
         {
-          information += "\n- " + sentences[sentence];
+          dataInfo["info"].push(sentences[sentence]);
           //document.write (sentences[sentence]);
           quantity = quantities.length;
         }
       }
     }
+    information.push(dataInfo);
     
      /*
     console.log("\nARTICLE: ");
