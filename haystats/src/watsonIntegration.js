@@ -20,9 +20,11 @@ const ENTITY_REL_THRESHOLD = 0.7;
 
 //take out categories, concepts, entity
 const analyzeParams = {
-  'url': 'https://globalnews.ca/news/7580297/b-c-trans-canada-highway-closure/',
+  'url': 'https://www.fool.ca/2021/01/13/warren-buffett-will-the-markets-crash-by-30-in-2021/',
   'returnAnalyzedText': true,
+
   'features': {
+    'metadata' : {},
     'categories' : {
         'limit' : MAX_CATEGORY
     },
@@ -43,6 +45,9 @@ const analyzeParams = {
 naturalLanguageUnderstanding.analyze(analyzeParams)
   .then(analysisResults => {
     //console.log(JSON.stringify(analysisResults, null, 2));
+  
+
+  var title = analysisResults["result"]["metadata"]["title"];
     
   var article_text = analysisResults["result"]["analyzed_text"];
 
@@ -77,12 +82,25 @@ naturalLanguageUnderstanding.analyze(analyzeParams)
   //add sentences
   let sentences = article_text.split(". ");
   let statistics = [];
- // console.log(sentences);
+  console.log("Title:");
+  console.log(title);
 
-  console.log("CONCEPTS:");
+  console.log("\nCONCEPTS:");
   for(let concept = 0; concept < concepts.length; concept++){
     console.log(concepts[concept]);
   }
+  /*
+  for (let quantity = 0; quantity < quantities.length; quantity++)
+    {
+      if ( sentences[sentence].includes(quantities[quantity]) )
+      {
+        console.log(sentences[sentence]);
+        //document.write (sentences[sentence]);
+        quantity = quantities.length;
+      }
+    }
+
+    */
 
   console.log("\nDATA:");
   for (let sentence = 0; sentence < sentences.length; sentence++)
@@ -98,6 +116,10 @@ naturalLanguageUnderstanding.analyze(analyzeParams)
     }
   }
   
+
+  console.log("\nARTICLE: ");
+  console.log(article_text);
+  
     //info = JSON.stringify(analysisResults.keywords, null, 2);
     //console.log(info);
   })
@@ -106,5 +128,3 @@ naturalLanguageUnderstanding.analyze(analyzeParams)
   });
 
 //let list = article_text.split(". ");
-
-
