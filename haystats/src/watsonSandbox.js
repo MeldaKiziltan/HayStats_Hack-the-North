@@ -16,12 +16,12 @@ const { IamAuthenticator } = require('ibm-watson/auth');
   const MAX_ENTITIES = 50;
 
   const KEYWORD_REL_THRESHOLD = 0.7;
-  const ENTITY_REL_THRESHOLD = 0.4;
+  const ENTITY_REL_THRESHOLD = 0.3;
 
   //`${URL}`
   //take out categories, concepts, entity
   const analyzeParams = {
-    'url': "https://physicsworld.com/a/nanotubes-show-their-true-colours/",
+    'url': "https://en.wikipedia.org/wiki/Bread",
     'returnAnalyzedText': true,
     'features': {
       'categories' : {
@@ -88,7 +88,7 @@ const { IamAuthenticator } = require('ibm-watson/auth');
       {
         if ( sentences[sentence].includes(quantities[quantity]) )
         {
-          information += sentences[sentence];
+          information += (sentences[sentence] + "\n\n");
           //document.write (sentences[sentence]);
           quantity = quantities.length;
         }
