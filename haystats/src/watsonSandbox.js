@@ -1,7 +1,7 @@
 const NaturalLanguageUnderstandingV1 = require('ibm-watson/natural-language-understanding/v1');
 const { IamAuthenticator } = require('ibm-watson/auth');
 
-  const naturalLanguageUnderstanding = new NaturalLanguageUnderstandingV1({
+const naturalLanguageUnderstanding = new NaturalLanguageUnderstandingV1({
     version: '2020-08-01',
     authenticator: new IamAuthenticator({
       apikey: '6dpL4JnV-ztfp_b5GooKwi7xvCxsR3VgfEQz7x-8VDfl',
@@ -21,7 +21,7 @@ const { IamAuthenticator } = require('ibm-watson/auth');
   //`${URL}`
   //take out categories, concepts, entity
   const analyzeParams = {
-    'url': "https://en.wikipedia.org/wiki/Bread",
+    'url': `${URL}`,
     'returnAnalyzedText': true,
     'features': {
         'metadata' : {},
@@ -78,20 +78,36 @@ const { IamAuthenticator } = require('ibm-watson/auth');
     }
 
     //add sentences
-    let sentences = (article_text.match(/([^\.!\?]+[\.!\?]+)|([^\.!\?]+$)/g));
+    let sentences = article_text.match(/([^\.!\?]+[\.!\?]+)|([^\.!\?]+$)/g);
     let statistics = [];
 
 
-    let information = "";
-    information += "TITLE:\n" + title + "\n";
+    let information;
     
-    information += "\nCONCEPTS:\n";
-    for(let concept = 0; concept < concepts.length; concept++){
-        if(concept !== 0){
-            information += " / ";
-        }
-        information += concepts[concept];
+    information += "TITLE:\n" + title + "\n";
+
+    let titleList = [];
+    
+    let titleInfo = {
+      "title": "TITLE",
+      "info": titleList,
     }
+
+    information["info"].push(title);
+    information.push(titleInfo);
+
+    let conceptList = [];
+
+    /*let conceptInfo = {
+      "title": "CONCEPTS",
+      "info": conceptList,
+    }*/
+    
+    for(let concept = 0; concept < concepts.length; concept++){
+        conceptList.push(concepts[concept]);
+    }
+
+    information.push(conceptInfo);
     /*
     for (let quantity = 0; quantity < quantities.length; quantity++)
       {
@@ -104,28 +120,56 @@ const { IamAuthenticator } = require('ibm-watson/auth');
       }
   
       */
-  
-    information += "\n\nData:";
+
+
+    let dataList = [];
+/*
+    let dataInfo = {
+      "title": "DATA",
+      "info": dataList,
+    }
+*/
+
     for (let sentence = 0; sentence < sentences.length; sentence++)
     {
       for (let quantity = 0; quantity < quantities.length; quantity++)
       {
         if ( sentences[sentence].includes(quantities[quantity]) )
         {
-          information += "\n- " + sentences[sentence];
+          dataList["info"].push(sentences[sentence]);
           //document.write (sentences[sentence]);
           quantity = quantities.length;
         }
       }
     }
+          
+    let exportingInfo = {
+      "title": `TITLE ${title}`,
+        "sections": [
+        {
+          "sectionTitle": "CONCEPTS",
+          "information": conceptList
+        },
+
+        {
+          "sectionTitle": "DATA",
+          "information": dataList
+        }
+      ]
+    }
     
+    //information.push(dataList);
+    
+    setSummary(exportingInfo);
+    //console.log(information);
+
      /*
     console.log("\nARTICLE: ");
     console.log(article_text);
     */
 
     //setSummary(information);
-    console.log(information);
+    //console.log(information);
       //info = JSON.stringify(analysisResults.keywords, null, 2);
       //console.log(info);
     })
