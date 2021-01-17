@@ -163,6 +163,7 @@ let stat_clue = [
   "8",
   "9"
   ];
+  
 
   for (let sentence = 0; sentence < sentences.length; sentence++)
   {
