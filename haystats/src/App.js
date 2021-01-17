@@ -18,7 +18,7 @@ export default function Popup(){
       <div className = "container">
       <img src={logo} className="Logo" alt="logo" />
       <blockquote>
-        <h1> Welcome to Haystats! </h1>
+        <h1> Welcome to HayStats! </h1>
       </blockquote>
       </div>
 
@@ -28,11 +28,11 @@ export default function Popup(){
 
     <br/>
 
-    {/* <h1>{summary.title}</h1> */}
-    {summary?.map(section => (
+    <h1>{summary?.title}</h1>
+    {summary?.sections.map(section => (
       <section>
-        <h3>{exportingInfo.sectionTitle}</h3>
-        <ul>{exportingInfo.information.map(item => (<li>item</li>))}</ul>
+        <h3>{section.sectionTitle}</h3>
+        <ul>{section.information.map(item => (<li>{item}</li>))}</ul>
       </section>
     ))}
 

@@ -86,19 +86,19 @@ function watson(URL, setSummary){
     let statistics = [];
 
 
-    let information;
+    // let information;
     
-    information += "TITLE:\n" + title + "\n";
+    // information += "TITLE:\n" + title + "\n";
 
-    let titleList = [];
+    // let titleList = [];
     
-    let titleInfo = {
-      "title": "TITLE",
-      "info": titleList,
-    }
+    // let titleInfo = {
+    //   "title": "TITLE",
+    //   "info": titleList,
+    // }
 
-    information["info"].push(title);
-    information.push(titleInfo);
+    // information["info"].push(title);
+    // information.push(titleInfo);
 
     let conceptList = [];
 
@@ -111,7 +111,7 @@ function watson(URL, setSummary){
         conceptList.push(concepts[concept]);
     }
 
-    information.push(conceptInfo);
+    // information.push(conceptInfo);
     /*
     for (let quantity = 0; quantity < quantities.length; quantity++)
       {
@@ -140,7 +140,7 @@ function watson(URL, setSummary){
       {
         if ( sentences[sentence].includes(quantities[quantity]) )
         {
-          dataList["info"].push(sentences[sentence]);
+          dataList.push(sentences[sentence]);
           //document.write (sentences[sentence]);
           quantity = quantities.length;
         }
@@ -148,7 +148,7 @@ function watson(URL, setSummary){
     }
           
     let exportingInfo = {
-      "title": `TITLE ${title}`,
+      "title": `${title}`,
         "sections": [
         {
           "sectionTitle": "CONCEPTS",
