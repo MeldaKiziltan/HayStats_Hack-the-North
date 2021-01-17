@@ -61,6 +61,7 @@ function watson(URL, setSummary){
     var concepts = [];
     for(let item = 0; item < analysisResults["result"]["concepts"].length; item++){
       concepts[item] = analysisResults["result"]["concepts"][item]["text"];
+
     }
 
     var keywords = [];
@@ -123,7 +124,6 @@ function watson(URL, setSummary){
       "halved",
       ];
   
-
   for (let sentence = 0; sentence < sentences.length; sentence++)
   {
     for (let clue = 0; clue < stat_clue.length; clue++)
