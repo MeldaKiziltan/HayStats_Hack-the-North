@@ -113,7 +113,11 @@ const { IamAuthenticator } = require('ibm-watson/auth');
         if ( sentences[sentence].includes(quantities[quantity]) )
         {
 <<<<<<< HEAD
+<<<<<<< HEAD
           information += sentences[sentence] +"\n";
+=======
+          information += "\n- " + sentences[sentence];
+>>>>>>> 248c4a47d725fc8caee56de34a6ec5936c50f7b4
 =======
           information += "\n- " + sentences[sentence];
 >>>>>>> 248c4a47d725fc8caee56de34a6ec5936c50f7b4
