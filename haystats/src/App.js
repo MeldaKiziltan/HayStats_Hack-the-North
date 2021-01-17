@@ -11,7 +11,7 @@ console.log(logo);
 
 export default function Popup(){
 
-  const [summary, setSummary] = useState("");
+  const [summary, setSummary] = useState();
 
   return(
     <div>
@@ -28,8 +28,8 @@ export default function Popup(){
 
     <br/>
 
-    {JSON.stringify(summary)}
-    
+    {summary}
+
     {/* Call the function */}
     {/* <script type="text/javascript" src="watsonIntegration.js"></script> */}
     </div>

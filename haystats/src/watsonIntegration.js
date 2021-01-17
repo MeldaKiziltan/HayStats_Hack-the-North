@@ -128,8 +128,8 @@ function watson(URL, setSummary){
     console.log(article_text);
     */
 
-    //setSummary(information);
-    console.log(information);
+    setSummary(information);
+    //console.log(information);
       //info = JSON.stringify(analysisResults.keywords, null, 2);
       //console.log(info);
     })
