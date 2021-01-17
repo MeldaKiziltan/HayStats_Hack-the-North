@@ -87,9 +87,9 @@ function watson(URL, setSummary){
 
 
     let information = "";
-    information += "TITLE:\n\n" + title + "\n\n";
+    information += "TITLE:\n" + title + "\n";
     
-    information += "\n\nCONCEPTS:\n\n";
+    information += "\nCONCEPTS:\n";
     for(let concept = 0; concept < concepts.length; concept++){
         if(concept !== 0){
             information += " / ";
@@ -116,7 +116,7 @@ function watson(URL, setSummary){
       {
         if ( sentences[sentence].includes(quantities[quantity]) )
         {
-          information += "\n\n- " + sentences[sentence];
+          information += "\n- " + sentences[sentence];
           //document.write (sentences[sentence]);
           quantity = quantities.length;
         }
@@ -124,11 +124,11 @@ function watson(URL, setSummary){
     }
     
      /*
-    console.log("\n\nARTICLE: ");
+    console.log("\nARTICLE: ");
     console.log(article_text);
     */
 
-    setSummary(information);
+    //setSummary(information);
     //console.log(information);
       //info = JSON.stringify(analysisResults.keywords, null, 2);
       //console.log(info);
