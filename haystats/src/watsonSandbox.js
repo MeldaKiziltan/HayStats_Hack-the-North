@@ -16,14 +16,15 @@ const { IamAuthenticator } = require('ibm-watson/auth');
   const MAX_ENTITIES = 50;
 
   const KEYWORD_REL_THRESHOLD = 0.7;
-  const ENTITY_REL_THRESHOLD = 0.4;
+  const ENTITY_REL_THRESHOLD = 0.3;
 
   //`${URL}`
   //take out categories, concepts, entity
   const analyzeParams = {
-    'url': "https://physicsworld.com/a/nanotubes-show-their-true-colours/",
+    'url': "https://en.wikipedia.org/wiki/Bread",
     'returnAnalyzedText': true,
     'features': {
+        'metadata' : {},
       'categories' : {
           'limit' : MAX_CATEGORY
       },
@@ -44,6 +45,8 @@ const { IamAuthenticator } = require('ibm-watson/auth');
     .then(analysisResults => {
       //console.log(JSON.stringify(analysisResults, null, 2));
       
+    var title = analysisResults["result"]["metadata"]["title"];
+    
     var article_text = analysisResults["result"]["analyzed_text"];
 
     var categories = [];
@@ -75,25 +78,55 @@ const { IamAuthenticator } = require('ibm-watson/auth');
     }
 
     //add sentences
-    let sentences = article_text.split(". ");
+    let sentences = (article_text..match(/([^\.!\?]+[\.!\?]+)|([^\.!\?]+$)/g));
     let statistics = [];
-  // console.log(sentences);
 
-    
 
     let information = "";
+    information += "TITLE:\n" + title + "\n";
+    
+    information += "\nCONCEPTS:\n";
+    for(let concept = 0; concept < concepts.length; concept++){
+        if(concept !== 0){
+            information += " / ";
+        }
+        information += concepts[concept];
+    }
+    /*
+    for (let quantity = 0; quantity < quantities.length; quantity++)
+      {
+        if ( sentences[sentence].includes(quantities[quantity]) )
+        {
+          console.log(sentences[sentence]);
+          //document.write (sentences[sentence]);
+          quantity = quantities.length;
+        }
+      }
+  
+      */
+  
+    information += "\n\nData:";
     for (let sentence = 0; sentence < sentences.length; sentence++)
     {
       for (let quantity = 0; quantity < quantities.length; quantity++)
       {
         if ( sentences[sentence].includes(quantities[quantity]) )
         {
-          information += sentences[sentence];
+<<<<<<< HEAD
+          information += sentences[sentence] +"\n";
+=======
+          information += "\n- " + sentences[sentence];
+>>>>>>> 248c4a47d725fc8caee56de34a6ec5936c50f7b4
           //document.write (sentences[sentence]);
           quantity = quantities.length;
         }
       }
     }
+    
+     /*
+    console.log("\nARTICLE: ");
+    console.log(article_text);
+    */
 
     //setSummary(information);
     console.log(information);

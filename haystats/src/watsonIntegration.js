@@ -20,14 +20,15 @@ function watson(URL, setSummary){
   const MAX_ENTITIES = 50;
 
   const KEYWORD_REL_THRESHOLD = 0.7;
-  const ENTITY_REL_THRESHOLD = 0.4;
+  const ENTITY_REL_THRESHOLD = 0.3;
 
   //`${URL}`
   //take out categories, concepts, entity
   const analyzeParams = {
-    'url': "https://physicsworld.com/a/nanotubes-show-their-true-colours/",
+    'url': `${URL}`,
     'returnAnalyzedText': true,
     'features': {
+        'metadata' : {},
       'categories' : {
           'limit' : MAX_CATEGORY
       },
@@ -48,6 +49,8 @@ function watson(URL, setSummary){
     .then(analysisResults => {
       //console.log(JSON.stringify(analysisResults, null, 2));
       
+    var title = analysisResults["result"]["metadata"]["title"];
+    
     var article_text = analysisResults["result"]["analyzed_text"];
 
     var categories = [];
@@ -81,26 +84,52 @@ function watson(URL, setSummary){
     //add sentences
     let sentences = article_text.split(". ");
     let statistics = [];
-  // console.log(sentences);
 
-    
 
     let information = "";
+    information += "TITLE:\n" + title + "\n";
+    
+    information += "\nCONCEPTS:\n";
+    for(let concept = 0; concept < concepts.length; concept++){
+        if(concept !== 0){
+            information += " / ";
+        }
+        information += concepts[concept];
+    }
+    /*
+    for (let quantity = 0; quantity < quantities.length; quantity++)
+      {
+        if ( sentences[sentence].includes(quantities[quantity]) )
+        {
+          console.log(sentences[sentence]);
+          //document.write (sentences[sentence]);
+          quantity = quantities.length;
+        }
+      }
+  
+      */
+  
+    information += "\n\nData:";
     for (let sentence = 0; sentence < sentences.length; sentence++)
     {
       for (let quantity = 0; quantity < quantities.length; quantity++)
       {
         if ( sentences[sentence].includes(quantities[quantity]) )
         {
-          information += sentences[sentence];
+          information += "\n- " + sentences[sentence];
           //document.write (sentences[sentence]);
           quantity = quantities.length;
         }
       }
     }
+    
+     /*
+    console.log("\nARTICLE: ");
+    console.log(article_text);
+    */
 
-    setSummary(information);
-    //console.log(information);
+    //setSummary(information);
+    console.log(information);
       //info = JSON.stringify(analysisResults.keywords, null, 2);
       //console.log(info);
     })
@@ -109,8 +138,6 @@ function watson(URL, setSummary){
     });
 
   //let list = article_text.split(". ");
-
-
 }
 
 export default watson;
