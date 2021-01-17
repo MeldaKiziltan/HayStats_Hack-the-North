@@ -20,10 +20,10 @@ const styles = {
 };
 
 function ClassNames(props) {
-  const { classes, children, className, ...other } = props;
+  const { classes, children, className, setSummary, ...other } = props;
 
   return (
-    <Button className={clsx(classes.root, className)} {...other} startIcon={<FindInPageIcon />} onClick={() => { watson(document.URL) }}>
+    <Button className={clsx(classes.root, className)} {...other} startIcon={<FindInPageIcon />} onClick={() => { watson(window.activeTabURL, setSummary) }}>
       {children || 'Click to find your needle in a haystack!'}
     </Button>
   );

@@ -1,3 +1,6 @@
+/* global chrome */
+
+import React, { useState } from 'react';
 import logo from './logo-small.png';
 import './index.css';
 import { Button, hexToRgb } from '@material-ui/core';
@@ -7,6 +10,9 @@ import naturalLanguageUnderstanding from './watsonIntegration';
 console.log(logo);
 
 export default function Popup(){
+
+  const [summary, setSummary] = useState("");
+
   return(
     <div>
       <div className = "container">
@@ -17,10 +23,13 @@ export default function Popup(){
       </div>
 
       <div className = "button">
-        <Fancy_button variant="outlined" color="default" />
+        <Fancy_button variant="outlined" color="default" setSummary={setSummary}/>
       </div>
 
     <br/>
+
+    {JSON.stringify(summary)}
+    
     {/* Call the function */}
     {/* <script type="text/javascript" src="watsonIntegration.js"></script> */}
     </div>

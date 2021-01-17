@@ -16,21 +16,7 @@
     "256": "logo-small.png"
   },
 
-  "background": {
-    "scripts": ["watsonIntegration.js"]
-  },
-
-  "content_scripts": [{
-    "matches": [
-        "https://*/",
-        "http://*/*"
-
-    ],
-    "all_frames": true,
-    "js": ["watsonIntegration.js"]
-  }],
-
-  "content_security_policy": "script-src 'self' 'sha256-vmLdg5RKpgO3eTVyueY2COr9JDt0zoS+Zbz7dAio20U='; object-src 'self'",  
+  "content_security_policy": "script-src 'self' 'sha256-FuEjsdSyPU5lv7AypX1UpdTr/VvN3Yz3tRNxXHQKr6c='; object-src 'self'",
   
   "web_accessible_resources": [
     "watsonIntegration.js"

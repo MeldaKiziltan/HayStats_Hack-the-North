@@ -1,8 +1,9 @@
-const URL = 'https://en.wikipedia.org/wiki/Breadstick';
+import NaturalLanguageUnderstandingV1 from 'ibm-watson/natural-language-understanding/v1';
+import { IamAuthenticator } from 'ibm-watson/auth';
 
-function watson(URL){
-  const NaturalLanguageUnderstandingV1 = require('ibm-watson/natural-language-understanding/v1');
-  const { IamAuthenticator } = require('ibm-watson/auth');
+function watson(URL, setSummary){
+  // const NaturalLanguageUnderstandingV1 = require('ibm-watson/natural-language-understanding/v1');
+  // const { IamAuthenticator } = require('ibm-watson/auth');
 
   const naturalLanguageUnderstanding = new NaturalLanguageUnderstandingV1({
     version: '2020-08-01',
@@ -89,12 +90,13 @@ function watson(URL){
         if ( sentences[sentence].includes(quantities[quantity]) )
         {
           console.log(sentences[sentence]);
-          document.write (sentences[sentence]);
+          //document.write (sentences[sentence]);
           quantity = quantities.length;
         }
-      
       }
     }
+
+    setSummary(sentences);
     
       //info = JSON.stringify(analysisResults.keywords, null, 2);
       //console.log(info);
@@ -108,4 +110,4 @@ function watson(URL){
 
 }
 
-watson(URL);
+export default watson;
