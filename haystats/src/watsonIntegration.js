@@ -71,50 +71,54 @@ function watson(URL, setSummary){
     }
 
     //add sentences
-    let sentences = article_text.match(/([^\.!\?]+[\.!\?]+)|([^\.!\?]+$)/g);
+    let sentences = article_text.split(". ");
+    //let sentences = article_text.match(/([^\.!\?]+[\.!\?]+)|([^\.!\?]+$)/g);
     let statistics = [];
 
     let dataList = [];
 
 
-let stat_clue = [
-  "Zero",
-  "One",
-  "Two",
-  "Three",
-  "Four",
-  "Five",
-  "Six",
-  "Seven",
-  "Eight",
-  "Nine",
-  "Ten",
-  "Eleven",
-  "Twelv",    // twelv on purpose
-  "Thirt",   // thirt on purpose
-  "Twenty",
-  "fif",
-  "First",
-  "Second",
-  "Third",
-  "Ninth",
-  "hundred",
-  "thousand",
-  "llion",
-  "half",
-  "quarter",
-  "dozen",
-  "0",
-  "1",
-  "2",
-  "3",
-  "4",
-  "5",
-  "6",
-  "7",
-  "8",
-  "9"
-  ];
+    let stat_clue = [
+      "One",
+      "Two",
+      "Three",
+      "Four",
+      "Five",
+      "Six",
+      "Seven",
+      "Eight",
+      "Nine",
+      "Ten",
+      "Eleven",
+      "Twelv",    // twelv on purpose
+      "Thirt",   // thirt on purpose
+      "Twenty",
+      "fif",
+      "First",
+      "Second",
+      "Third",
+      "Ninth",
+      "hundred",
+      "thousand",
+      "llion",
+      "half",
+      "quarter",
+      "dozen",
+      "0",
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9",
+      "double",
+      "triple",
+      "quadruple",
+      "halved",
+      ];
   
 
   for (let sentence = 0; sentence < sentences.length; sentence++)
