@@ -16,5 +16,5 @@ Based on the open page of the user, HayStats leverages IBM's Nagtural Language U
 
 Made of a team for first and second time hackers, we are proud to present HayStats to you!
 
-## What's the future of HayStats?
+## What's the future for HayStats?
 Fear not! HayStats will be improved! After pitching our idea to our fellow classmates, we realised that there is a real depand for Haystats and we plan to keep on developing this project and releasing it out to the world wid web for everyone to use!
